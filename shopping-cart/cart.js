@@ -1,10 +1,11 @@
-// let cart = [
-//     {item: "apple", quantity: 5}, 
-//     {item: "orange", quantity: 3}
-// ];
-let cart =[{item:"", quantity:""},];
+let cart = [
+    {item: "apple", quantity: 5}, 
+    {item: "orange", quantity: 3},
+];
+// let cart =[{item:"", quantity:""},];
 // let updatedCart = cart.map(removeItem());
 // let updatedCart = new Map(cart.filter(item => item));
+//  let updatedCart = cart.map(removeItem).filter(item => item.item === cart.item);
 
 
     function addItem(cart, item, quantity) {
@@ -38,24 +39,26 @@ let cart =[{item:"", quantity:""},];
 //         return cart;
     // };
     function removeItem(cart, item ) {
-        let updatedCart = cart.map(addItem).filter(item => item.item === cart.item);
-        // for (let quantity of cart){
-        if(cart.item === item){
+        let updatedCart = [];// per the instructions we needed to return a new cart once the item was removed. Tried serval times to create this using map but kept failing. 
+        filteredItem = cart.filter(cart => cart.item < 1);
+        // for (let index of cart){
+        if(cart.item === 0){
             return updatedCart;
-        };
-        if () {
+        } 
+        if (!cart.includes(item)) { //.includes() searches for an item within the arry. so I would wan this to return an error if the item could not be located. w3 schools.
             return "Error: This item is not in the cart. Item cannot be removed";
         };
-        
-        return updatedCart.slice(...updatedCart);//used .slice() to remove the last element in the cart array. 
-        
+        return cart.pop(...cart);//used .slice() to remove the last element in the cart array. 
+    // }
             
 };
     
     function getTotalItems(cart) {
-        return cart.reduce (function (total, item) {
-            return total + item.quantity;
-    }, 0);
+        let totalItems = cart.reduce((sum,item) => sum + item.quantity, 0);
+            return totalItems;
+        // return cart.reduce (function (total, item) {
+            // return total + item.quantity;
     };
+    
 
-module.exports = {addItem, removeItem, getTotalItems, cart}
+module.exports = {addItem, removeItem, getTotalItems, cart }
